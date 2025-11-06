@@ -8,6 +8,7 @@ pyinstaller ^
     --onefile ^
     --noconsole ^
     --add-data "assets/icon.ico:assets" ^
+    --add-data "version.txt:." ^
     --icon="assets/icon.ico" ^
     --name "BL4 Save Duplicator" ^
     src/main.py

@@ -1,6 +1,9 @@
 import os
+import threading
 import tkinter as tk
 import utils
+import version
+import webbrowser
 from save import Save
 from tkinter import ttk, filedialog, messagebox
 from tooltip import Tooltip
@@ -28,6 +31,9 @@ class GUI:
         self.reset_uvh_challenges = tk.BooleanVar(value=False)
 
         self.create_widgets()
+
+        #Check for updates in a separate thread
+        threading.Thread(target=self.check_for_updates).start()
 
     def create_widgets(self):
         # Main frame
@@ -237,3 +243,15 @@ class GUI:
 
     def run(self):
         self.root.mainloop()
+
+    def check_for_updates(self):
+        """Check for application updates and notify the user if available."""
+
+        if version.is_update_available():
+            response = messagebox.askyesno(
+                "Update Available",
+                "A new version of Borderlands 4 Save Duplicator is available.\nWould you like to visit the download page?"
+            )
+            if response:
+                webbrowser.open("https://github.com/Judgy53/BL4_Save_Duplicator/releases")
+                self.root.quit()
