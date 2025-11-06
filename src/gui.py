@@ -1,5 +1,6 @@
 import os
 import tkinter as tk
+import utils
 from save import Save
 from tkinter import ttk, filedialog, messagebox
 from tooltip import Tooltip
@@ -13,7 +14,7 @@ class GUI:
         self.root.title("Borderlands 4 Save Duplicator")
         self.root.geometry("500x475")
         self.root.resizable(False, False)
-        self.root.iconbitmap(default="assets/icon.ico")
+        self.root.iconbitmap(default=utils.resource_path(os.path.join("assets", "icon.ico")))
 
         self.loaded_save: Save | None = None
 
