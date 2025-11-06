@@ -10,5 +10,5 @@ pyinstaller ^
     --add-data "assets/icon.ico:assets" ^
     --add-data "version.txt:." ^
     --icon="assets/icon.ico" ^
-    --name "BL4 Save Duplicator" ^
+    --name "BL4_Save_Duplicator" ^
     src/main.py
